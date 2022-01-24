@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>ALDCC score for mortality risk prediction</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='diabetes-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+    	<div class="container">
+            <h2 class='container-heading'><span class="heading_font">ALDCC score for mortality risk prediction</span></h2><br>
+            <div class='description'>
+    			<p>(ALDCC Scoring System for Prediction of Disease Severity Using Coagulopathy Biomarkers )</p><br>
+    			
+    		</div>
+    	</div>
+    	
+		<!-- Result -->
+		<div class="results">
+			{% if prediction>0.5 %}
+				<h1>Prediction: <span class='danger'>High mortality risk ({{prediction*100}}%)</span></h1>
+				<img class="gif" src="{{ url_for('static', filename='High.png') }}" alt="Diabetes Image">
+                        {% elif prediction<=0.5 and prediction>0.05 %}
+				<h1>Prediction: <span class='danger'>Moderate mortality risk ({{prediction*100}}%)</span></h1>
+				<img class="gif" src="{{ url_for('static', filename='Moderate.png') }}" alt="Diabetes Image">
+			
+			{% elif prediction<=0.05 %}
+				<h1>Prediction: <span class='safe'>Low mortality risk ({{prediction*100}}%)</span></h1>
+				<img class="gif1" src="{{ url_for('static', filename='Safe.jpg') }}" alt="Not Diabetes Image">
+			{% endif %}
+		</div>
+
+		<!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+               <p class='footer-description'><b>A novel COVID-19 project by <a href="https://sites.google.com/view/mchowdhury/home?authuser=0"style="color:white">Qatar University machine learning group.</a></b></p>
+              
+           </div>
+           <p class='footer-description'><b>This app is developed by <a href="https://sites.google.com/view/tawsifurrahman/home?authuser=0"style="color:white">Tawsifur Rahman.</a></b></p>
+       </div>
+
+    </body>
+</html>
